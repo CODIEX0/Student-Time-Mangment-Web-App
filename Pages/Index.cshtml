@@ -1,0 +1,82 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "STUDENT TIME MANAGER";
+}
+
+<div class="jumbotron">
+    <div class="text-center">
+
+@foreach(var module in Model.modules)
+{
+    @if(Model.today.Equals(module.studyDay, StringComparison.InvariantCultureIgnoreCase))
+    {
+        <div class="row mb-3">
+            <div class="col-sm-9">
+                <div class='alert alert-info alert-dismissible fade show' role='alert'>
+                    <strong> Today's Planned Module Is  @module.code - @module.name,  Make Sure You Study Before The End Of The Day! &#x1F4DA;</strong>
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                </div> 
+            </div>
+        </div>
+    }
+}
+
+        <hr/>    
+        <h1>&#x231B; STUDENT TIME MANAGEMENT WEB APP &#x231B;</h1>    
+        <p style="font-size:x-large" class="lead">Welcome To The Student Time Manager Web Application, You May Choose Options From The Navigation Bar Above Or The Buttons Below.</p>     
+    </div>
+
+    <hr/>
+    <h1>Features</h1>
+    <hr/>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h3>Register And Login</h3>
+        <p class="lead">Sign Up Or Login Using Your Username And Password, To Access This Web Application. You Can Only See Your Own Data And Never That Of Other Users.</p>
+    </div>
+    <div class="col-md-6">
+        <h3>Module Study Reminder</h3>
+        <p class="lead">Set Aside A Specific Day Of The Week For Each Module. When The Website Is Accessed, A Reminder Will Be Shown Which Will Display The Module Planned For The Day.</P>
+    </div>
+
+    <div class="col-md-6">
+        <h3>Add A Module</h3>
+        <p class="lead">Add A Module And Calculate The Hours Of Self-Study Required.</p>        
+        <a class='btn btn-primary btn-sm' href='/Modules/Create'>Add Module &#x1F5A5;</a>
+    </div>
+    <div class="col-md-6">
+        <h3>Display Module Info</h3>
+        <p class="lead">Display The List Of Modules With The Hours Of Self‐Study Required.</p>
+        <a class='btn btn-primary btn-sm' href='/Modules/Index'>Display Module Info &#x1F5A5;</a>
+    </div>
+
+    <p> </p>
+
+    <div class="col-md-6">
+        <h3>Add A Semester</h3>
+        <p class="lead">Add A Semester. With A Maximum Of 2 Semesters A Year!</p>        
+        <a class='btn btn-primary btn-sm' href='/Semesters/Create'>Add Semester &#x1F4DA;</a>
+    </div>
+    <div class="col-md-6">
+        <h3>Display Semester Info</h3>
+        <p class="lead">Display The List Of Semesters For The Current Year.</p>
+        <a class='btn btn-primary btn-sm' href='/Semesters/Index'>Display Semester Info &#x1F4DA;</a>
+    </div>
+
+    <p> </p>
+
+    <div class="col-md-6">
+        <h3>Add A Week</h3>
+        <p class="lead">Add A Week And Calculate The Remaining Hours Of Self-Study.</p>      
+        <a class='btn btn-primary btn-sm' href='/Weeks/Create'>Add Week &#x1F5D3;</a>
+    </div>
+
+    <div class="col-md-6">
+        <h2>Display Weekly Info</h2>
+        <p class="lead">Display Weekly Info And The Remaining Hours Of Self‐Study Per Module.</p>
+        <a class='btn btn-primary btn-sm' href='/Weeks/Index'>Display Weekly Info &#x1F5D3; </a>
+    </div>
+</div>

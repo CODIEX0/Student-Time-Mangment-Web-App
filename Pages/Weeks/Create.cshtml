@@ -1,0 +1,70 @@
+﻿@page
+@model STMWeb.Pages.Weeks.CreateModel
+@{
+    ViewData["Title"] = "STUDENT TIME MANAGER";
+}
+
+@if(Model.errorMessage.Length > 0)
+{
+    <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+        <strong>@Model.errorMessage</strong>
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>
+}
+
+<br>
+<h1>&#x1F5D3;</h1>
+<h2>New Week Info</h2>
+
+<form method="POST">
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">SEMESTER #</label> 
+        <div class="col-sm-6">
+            <select name="semesterID" class="form-select" asp-items="Model.model.SemesterSelectList">
+                <option value="Select A Day">Select A Semester Number</option>
+            </select>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">MODULE CODE</label> 
+        <div class="col-sm-6">
+            <select name="moduleCode" class="form-select" asp-items="Model.model.ModuleSelectList">
+                <option value="Select A Day">Select A Module Code</option>
+            </select>
+        </div>
+    </div>    
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">HOURS SPENT STUDYING</label> 
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="hours" value="@Model.week.HoursSpentWorking" >
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">START DATE</label> 
+        <div class="col-sm-6">
+            <input type="date" class="form-control" name="startDate" value="@Model.week.StartDate" >
+        </div>
+    </div>
+
+    @if(Model.successMessage.Length > 0)
+    {
+        <div class="row mb-3">
+            <div class="col-sm-9">
+                <div class='alert alert-success alert-dismissible fade show' role='alert'>
+                    <strong>@Model.successMessage</strong>
+                    <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="row mb-3"> 
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-outline-primary">Submit</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/" role="button">Cancel</a>
+        </div>
+    </div>
+</form>
+

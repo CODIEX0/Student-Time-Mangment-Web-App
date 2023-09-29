@@ -1,0 +1,52 @@
+﻿@page
+@model STMWebApp.Pages.Modules.Index
+@{
+    ViewData["Title"] = "STUDENT TIME MANAGER";
+}
+
+@if(Model.errorMessage.Length > 0)
+{
+    <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+        <strong>@Model.errorMessage</strong>
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>
+}
+
+<br>
+<h1>&#x1F5A5;</h1>
+<h2>MODULE LIST</h2>
+<a class='btn btn-primary btn-sm' href='/Modules/Create'>New Module</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>SEMESTER #</th>
+            <th>CODE</th>
+            <th>NAME</th>
+            <th>CREDITS</th>
+            <th>HOURS PER WEEK</th>
+            <th>REMINDER DAY</th>
+            <th>HOURS OF SELF-STUDY</th>
+        </tr>
+    </thead>    
+    <tbody>
+
+        @foreach(var module in Model.modules)
+        {
+            <tr>
+                <td>@module.id</td>
+                <td>@module.semesterNum</td>
+                <td>@module.code</td>
+                <td>@module.name</td>
+                <td>@module.credits</td>
+                <td>@module.hours</td>
+                <td>@module.reminder</td>
+                <td>@module.selfStudyHours</td>                
+                <td>
+                    <a class ="btn btn-danger btn-sm" href="/Modules/Delete?id=">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
